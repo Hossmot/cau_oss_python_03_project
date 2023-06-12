@@ -2,13 +2,13 @@
 class parking_spot:
 
     #6개의 데이터를 저장할 수 있는 딕셔너리 객체, 생성자를 통해 생성/설정
-    def __init__(self, name, city, district, ptype, longtitude, latitude):
+    def __init__(self, name, city, district, ptype, longitude, latitude):
         self.__item = {
             'name' : name,
             'city' : city,
             'district' : district,
             'ptype' : ptype,
-            'longitude' : longtitude,
+            'longitude' : longitude,
             'latitude' : latitude 
         }
 
@@ -36,13 +36,38 @@ def print_spots(spots):                          #객체의 리스트를 받아 
     print(f'---print elements({len(spots)})---') #객체의 개수 출력
     for Obj in spots:
         print(Obj)
+
+#데이터 필터 함수
+#리스트 함축, 조건에 맞는 객체의 리스트를 새로 만들어 반환
+def filter_by_name(spots, name):
+    ReTurnList = [SearchObj for SearchObj in spots if name in parking_spot.get(SearchObj, 'name')]
+    return ReTurnList
+
+def filter_by_city(spots, city):
+    ReTurnList = [SearchObj for SearchObj in spots if city in parking_spot.get(SearchObj, 'city')]
+    return ReTurnList
+
+def filter_by_district(spots, district):
+    ReTurnList = [SearchObj for SearchObj in spots if district in parking_spot.get(SearchObj, 'district')]
+    return ReTurnList
+
+def filter_by_ptype(spots, ptype):
+    ReTurnList = [SearchObj for SearchObj in spots if ptype in parking_spot.get(SearchObj, 'ptype')]
+    return ReTurnList
+
+def filter_by_location(spots, locations):
+    ReTurnList = [SearchObj for SearchObj in spots if locations[0]< float(parking_spot.get(SearchObj, 'latitude')) <locations[1] and locations[2]< float(parking_spot.get(SearchObj, 'longitude')) <locations[3]]
+    return ReTurnList
+
+
+
 # 각 단계별로 테스트 (테스트할때 주석해제 후 사용)
 if __name__ == '__main__':
     print("Testing the module...")
 
     # version#2
     import file_manager
-    str_list = file_manager.read_file("./input/free_parking_spot_seoul.csv")
+    str_list = file_manager.read_file("./input/free_parking_spot.csv")
 
     # for s in str_list:
     #     print(s)      #파일 리딩 확인, 출력
@@ -50,13 +75,20 @@ if __name__ == '__main__':
     # for i in str_list_to_class_list(str_list):    #str_list_to_class_list 작동확인
     #     print(i)
 
-    # spots = str_list_to_class_list(str_list)
+    spots = str_list_to_class_list(str_list)
     # print_spots(spots)
 
     # version#3
     # spots = filter_by_district(spots, '동작')
     # print_spots(spots)
+
+    # spots = filter_by_name(spots, '대학교')
+    # print_spots(spots)
+
+    # spots = filter_by_ptype(spots, '부설')
+    # print_spots(spots)
     
     # version#4
     # spots = sort_by_keyword(spots, 'name')
     # print_spots(spots)
+# %%
