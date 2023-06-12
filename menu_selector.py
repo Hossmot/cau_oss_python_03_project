@@ -1,5 +1,9 @@
+import file_manager          #파일 작업을 위한 모듈
+import parking_spot_manager  #파일에서 불러온 데이터 작업을 위한 모듈
 def start_process(path):
     while True:
+        StrList = file_manager.read_file(path)   
+        ObjList = parking_spot_manager.str_list_to_class_list(StrList)
         print("---menu---")
         print("[1] print")
         print("[2] filter")
@@ -7,8 +11,7 @@ def start_process(path):
         print("[4] exit")
         select = int(input('type:'))
         if select == 1:
-            print("not implemented yet")
-            # fill this block
+            parking_spot_manager.print_spots(ObjList)
         elif select == 2:
             print("---filter by---")
             print("[1] name")
@@ -52,7 +55,7 @@ def start_process(path):
                 # fill this block
             else: print("invalid input")
         elif select == 4:
-            print("not implemented yet")
-            # fill this block
+            print("Exit")
+            break
         else:
             print("invalid input")
