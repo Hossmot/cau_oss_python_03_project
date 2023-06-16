@@ -41,17 +41,16 @@ def start_process(path):
                 ObjList = parking_spot_manager.filter_by_location(ObjList, locations)  #location 필터
             else:
                 print("invalid input")
-        elif select == 3:
+        elif select == 3:                                                               #3번동작 정렬
             keywords = ['name', 'city', 'district', 'ptype', 'latitude', 'longitude']
             print("---sort by---")
-            print(keywords)
+            print(keywords)                                                                #키워드를 받아 정렬한다
             keyword = input('type keyword:')
             if keyword in keywords:
-                print("not implemented yet")
-                # fill this block
+                ObjList = parking_spot_manager.sort_by_keyword(ObjList, keyword)
             else: print("invalid input")
         elif select == 4:
-            print("Exit")
+            print("Exit")                                                            #4번동작 프로그램 종료
             break
         else:
             print("invalid input")

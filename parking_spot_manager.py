@@ -59,6 +59,11 @@ def filter_by_location(spots, locations):
     ReTurnList = [SearchObj for SearchObj in spots if locations[0]< float(parking_spot.get(SearchObj, 'latitude')) <locations[1] and locations[2]< float(parking_spot.get(SearchObj, 'longitude')) <locations[3]]
     return ReTurnList
 
+#객체 정렬 함수
+#입력받은 key를 기준으로 정렬한다
+def sort_by_keyword(spots, keyword):
+    return sorted(spots, key = lambda Obj : Obj.get(keyword)) #get함수로 __item의 value를 읽어온다
+
 
 
 # 각 단계별로 테스트 (테스트할때 주석해제 후 사용)
@@ -66,8 +71,8 @@ if __name__ == '__main__':
     print("Testing the module...")
 
     # version#2
-    import file_manager
-    str_list = file_manager.read_file("./input/free_parking_spot.csv")
+    # import file_manager
+    # str_list = file_manager.read_file("./input/free_parking_spot.csv")
 
     # for s in str_list:
     #     print(s)      #파일 리딩 확인, 출력
@@ -75,7 +80,7 @@ if __name__ == '__main__':
     # for i in str_list_to_class_list(str_list):    #str_list_to_class_list 작동확인
     #     print(i)
 
-    spots = str_list_to_class_list(str_list)
+    # spots = str_list_to_class_list(str_list)
     # print_spots(spots)
 
     # version#3
@@ -91,4 +96,3 @@ if __name__ == '__main__':
     # version#4
     # spots = sort_by_keyword(spots, 'name')
     # print_spots(spots)
-# %%

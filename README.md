@@ -14,3 +14,8 @@ menu_selector 모듈의 1번, 4번 기능 구현
 version #3
 parking_spot_manager 모듈의 필터 함구 구현 (name, city, district, ptype, location)
 menu_selector 모듈의 2번 기능 구현
+
+## 2023-06-16
+version #4
+parking_spot_manager 모듈의 정렬 함수 sorted_by_keyword 구현
+menu_selector 모듈의 3번 기능 구현
